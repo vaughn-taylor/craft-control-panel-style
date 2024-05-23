@@ -1,0 +1,60 @@
+{
+  "name": "vaughndtaylor/craft-control-panel-style",
+  "description": "A plugin to create a more visual appealing Craft CMS Control Panel for you and your clients.",
+  "type": "craft-plugin",
+  "license": "proprietary",
+  "support": {
+    "email": "vaughn.taylor+cpstyle@gmail.com",
+    "issues": "https://github.com/vaughn-taylor/craft-control-panel-style/issues?state=open",
+    "source": "https://github.com/vaughn-taylor/craft-control-panel-style",
+    "docs": "https://github.com/vaughn-taylor/craft-control-panel-style",
+    "rss": "https://github.com/vaughn-taylor/craft-control-panel-style/releases.atom"
+  },
+  "keywords": [
+    "css",
+    "style",
+    "control panel",
+    "editor",
+    "variables",
+    "monaco",
+    "craftcms",
+    "craft",
+    "cms"
+  ],
+  "require": {
+    "php": ">=8.2",
+    "craftcms/cms": "^5.1.0",
+    "nystudio107/craft-code-editor": "^1.0"
+  },
+  "require-dev": {
+    "craftcms/ecs": "dev-main",
+    "craftcms/phpstan": "dev-main"
+  },
+  "autoload": {
+    "psr-4": {
+      "vaughndtaylor\\craftcontrolpanelstyle\\": "src/"
+    }
+  },
+  "extra": {
+    "handle": "control-panel-style",
+    "name": "Control Panel Style",
+    "developer": "vaughndtaylor",
+    "documentationUrl": "https://github.com/vaughn-taylor/craft-control-panel-style",
+    "class": "vaughndtaylor\\craftcontrolpanelstyle\\ControlPanelStyle"
+  },
+  "scripts": {
+    "check-cs": "ecs check --ansi",
+    "fix-cs": "ecs check --ansi --fix",
+    "phpstan": "phpstan --memory-limit=1G"
+  },
+  "config": {
+    "sort-packages": true,
+    "platform": {
+      "php": "8.2"
+    },
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true,
+      "craftcms/plugin-installer": true
+    }
+  }
+}

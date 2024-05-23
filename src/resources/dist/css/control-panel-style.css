@@ -1,0 +1,89 @@
+#settings-main-content h2 {
+    font-size: 1.75rem !important;
+    margin: 0 0 1rem;
+}
+#settings-main-content strong {
+    font-weight: 600 !important;
+}
+#settings-main-content ol {
+    margin: 1rem 0 !important;
+    padding: 0 2rem !important;
+    list-style-type: decimal;
+}
+#settings-main-content li {
+    margin: 0 0 0.5rem;
+}
+#settings-main-content .icon {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 0 1.5rem;
+}
+#settings-main-content .icon svg {
+    width: 1.75rem;
+    height: auto;
+    margin: 0 0.75rem 0 0;
+}
+#settings-main-content .overview {
+    background: var(--gray-200);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--small-border-radius);
+    padding: var(--l);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+#settings-main-content .section {
+    margin: 1rem 0 0;
+    padding: var(--l) var(--l) calc(var(--l) * 1.5) var(--l);
+}
+#settings-main-content .heading-section {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 4fr 1fr;
+}
+#settings-main-content .toggle-method {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    flex-direction: column;
+}
+#settings-main-content #settings-name-tip {
+    margin-top: -1.2rem;
+}
+#settings-main-content .heading label {
+    font-weight: 600;
+    font-size: 1.25rem !important;
+    margin: 0 !important;
+}
+#settings-main-content .instructions {
+    margin: 0 0 0.75rem !important;
+}
+#settings-main-content .lightswitch-outer-container {
+    margin: 0 0 0.5rem 0;
+}
+#settings-main-content .lightswitch-inner-container {
+    border: none !important;
+}
+#settings-main-content .lightswitch-inner-container span {
+    text-wrap: nowrap !important;
+}
+#settings-main-content #settings-variable-fields .field .heading {
+    margin: 0;
+}
+#settings-main-content #settings-variable-fields .field .heading label {
+    font-size: 0.875rem;
+    margin: 0;
+}
+#settings-main-content .control-group {
+    margin: 1rem 0 0 0;
+    display: flex;
+    flex-direction: columns;
+    flex: 1 1 0%;
+    align-items: center;
+}
+#settings-main-content .control-group .field {
+    margin: 0 !important;
+    padding: 0 2rem 1rem 0 !important;
+}
+#settings-main-content .control-group .field .heading label {
+    font-size: 95% !important;
+}
