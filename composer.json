@@ -10,6 +10,7 @@
     "docs": "https://github.com/vaughn-taylor/craft-control-panel-style",
     "rss": "https://github.com/vaughn-taylor/craft-control-panel-style/releases.atom"
   },
+  "version": "1.0.0",
   "keywords": [
     "css",
     "style",

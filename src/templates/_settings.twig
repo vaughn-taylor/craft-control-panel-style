@@ -13,7 +13,7 @@
 {% from _self import configWarning %}
 
 {% set borderRadiusOptions = [
-    {value: '', label: 'unset'},
+    {value: '', label: '...'},
     {value: 0, label: "0"},
     {value: 2, label: "2"},
     {value: 3, label: "3"},
@@ -37,7 +37,7 @@
 ] %}
 
 {% set sizeOptions = [
-    {value: '', label: 'unset'},
+    {value: '', label: '...'},
     {value: 0, label: "0"},
     {value: 2, label: "2"},
     {value: 3, label: "3"},
@@ -76,17 +76,55 @@
     {value: 36, label: "36"},
 ] %}
 
+{% set paddingOptions = [
+    {value: "", label: "Choose..."},
+    {value: "--s", label: "Small"},
+    {value: "--m", label: "Medium"},
+    {value: "--l", label: "Large"},
+    {value: "--xl", label: "X-Large"},
+] %}
+
+{% set sidebarOptions = [
+    {value: "", label: "Choose..."},
+    {value: "11", label: "11rem"},
+    {value: "12", label: "12rem"},
+    {value: "13", label: "13rem"},
+    {value: "14", label: "14rem"},
+    {value: "15", label: "15rem"},
+    {value: "16", label: "16rem"},
+    {value: "17", label: "17rem"},
+    {value: "18", label: "18rem"},
+    {value: "19", label: "19rem"},
+    {value: "20", label: "20rem"},
+    {value: "21", label: "21rem"},
+] %}
+
+{% set headerOptions = [
+    {value: "", label: "Choose..."},
+    {value: "2", label: "2rem"},
+    {value: "2.25", label: "2.25rem"},
+    {value: "2.5", label: "2.5rem"},
+    {value: "2.75", label: "2.75rem"},
+    {value: "3", label: "3rem"},
+    {value: "3.25", label: "3.25rem"},
+    {value: "3.5", label: "3.5rem"},
+    {value: "3.75", label: "3.75rem"},
+    {value: "4", label: "4rem"},
+    {value: "4.25", label: "4.25rem"},
+    {value: "4.5", label: "4.5rem"},
+] %}
+
 {% set themeOptions = [
-    {value: '', label: 'unset'},
-    {value: 't1', label: "IBM Scamp"},
-    {value: 't2', label: "Apple Lisa"},
-    {value: 't3', label: "Nintendo 64"},
-    {value: 't4', label: "Sony Walkman"},
-    {value: 't5', label: "Stoic"},
-    {value: 't6', label: "Darkness"},
-    {value: 't7', label: "Hell"},
-    {value: 't8', label: "Monotone - Cool"},
-    {value: 't9', label: "Monotone - Warm"},
+    {value: "", label: 'Choose...'},
+    {value: "t1", label: "IBM Scamp", selected: "selected"},
+    {value: "t2", label: "Apple Lisa"},
+    {value: "t3", label: "Nintendo 64"},
+    {value: "t4", label: "Sony Walkman"},
+    {value: "t5", label: "Stoic"},
+    {value: "t6", label: "Darkness"},
+    {value: "t7", label: "Hell"},
+    {value: "t8", label: "Monotone - Cool"},
+    {value: "t9", label: "Monotone - Warm"},
 ] %}
 
 {% block content %}
@@ -347,6 +385,45 @@
                     value: settings.xlSize,
                     options: sizeOptions,
                     errors: settings.getErrors("xlSize")
+                }) }}
+
+                {{ forms.selectField({
+                    label: "Padding Size"|t,
+                    instructions: "`--padding`",
+                    id: "paddingSize",
+                    name: "paddingSize",
+                    value: settings.paddingSize,
+                    options: paddingOptions,
+                    errors: settings.getErrors("paddingSize")
+                }) }}
+            </div>
+            <div class="control-group">
+                {{ forms.selectField({
+                    label: "Global Sidebar Width"|t,
+                    instructions: "`--global-sidebar-width`",
+                    id: "globalSidebarWidth",
+                    name: "globalSidebarWidth",
+                    value: settings.globalSidebarWidth,
+                    options: sidebarOptions,
+                    errors: settings.getErrors("globalSidebarWidth")
+                }) }}
+                {{ forms.selectField({
+                    label: "Sidebar Width"|t,
+                    instructions: "`--sidebar-width`",
+                    id: "sidebarWidth",
+                    name: "sidebarWidth",
+                    value: settings.sidebarWidth,
+                    options: sidebarOptions,
+                    errors: settings.getErrors("sidebarWidth")
+                }) }}
+                {{ forms.selectField({
+                    label: "Header Height"|t,
+                    instructions: "`--header-height`",
+                    id: "headerHeight",
+                    name: "headerHeight",
+                    value: settings.headerHeight,
+                    options: headerOptions,
+                    errors: settings.getErrors("headerHeight")
                 }) }}
             </div>
         </div>

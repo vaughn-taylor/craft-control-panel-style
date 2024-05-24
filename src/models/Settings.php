@@ -87,6 +87,26 @@ class Settings extends Model
     public string $xlSize = '';
 
     /**
+     * @var string global padding size variable.
+     */
+    public string $paddingSize = '';
+
+    /**
+     * @var string global sidebar width.
+     */
+    public string $globalSidebarWidth = '';
+
+    /**
+     * @var string sidebar width.
+     */
+    public string $sidebarWidth = '';
+
+    /**
+     * @var string header height.
+     */
+    public string $headerHeight = '';
+
+    /**
      * @var bool Toggle CSS variables on/off.
      */
     public bool $includeCSSVariables = false;

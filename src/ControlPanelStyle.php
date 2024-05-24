@@ -76,38 +76,54 @@ class ControlPanelStyle extends Plugin
                     $mSize = trim($settings->mSize);
                     $lSize = trim($settings->lSize);
                     $xlSize = trim($settings->xlSize);
+                    $paddingSize = trim($settings->paddingSize);
+                    $sidebarWidth = trim($settings->sidebarWidth);
+                    $globalSidebarWidth = trim($settings->globalSidebarWidth);
+                    $headerHeight = trim($settings->headerHeight);
 
                     $cssVars = array();
 
                     if ('' != $smallRadius) {
-                        $cssVars['--small-border-radius'] = $smallRadius;
+                        $cssVars['--small-border-radius'] = $smallRadius.'px';
                     }
                     if ('' != $mediumRadius) {
-                        $cssVars['--medium-border-radius'] = $mediumRadius;
+                        $cssVars['--medium-border-radius'] = $mediumRadius.'px';
                     }
                     if ('' != $largeRadius) {
-                        $cssVars['--large-border-radius'] = $largeRadius;
+                        $cssVars['--large-border-radius'] = $largeRadius.'px';
                     }
                     if ('' != $xsSize) {
-                        $cssVars['--xs'] = $xsSize;
+                        $cssVars['--xs'] = $xsSize.'px';
                     }
                     if ('' != $sSize) {
-                        $cssVars['--s'] = $sSize;
+                        $cssVars['--s'] = $sSize.'px';
                     }
                     if ('' != $mSize) {
-                        $cssVars['--m'] = $mSize;
+                        $cssVars['--m'] = $mSize.'px';
                     }
                     if ('' != $lSize) {
-                        $cssVars['--l'] = $lSize;
+                        $cssVars['--l'] = $lSize.'px';
                     }
                     if ('' != $xlSize) {
-                        $cssVars['--xl'] = $xlSize;
+                        $cssVars['--xl'] = $xlSize.'px';
+                    }
+                    if ('' != $paddingSize) {
+                        $cssVars['--padding'] = 'var('.$paddingSize.')';
+                    }
+                    if ('' != $globalSidebarWidth) {
+                        $cssVars['--global-sidebar-width'] = $globalSidebarWidth.'rem';
+                    }
+                    if ('' != $sidebarWidth) {
+                        $cssVars['--sidebar-width'] = $sidebarWidth.'rem';
+                    }
+                    if ('' != $headerHeight) {
+                        $cssVars['--header-height'] = $headerHeight.'rem';
                     }
 
                     if (count($cssVars) > 0) {
                         $cssVarsComp = ":root{\n";
                         foreach ($cssVars as $k => $v) {
-                            $cssVarsComp .= sprintf("\t%s:%spx;\n", $k, $v);
+                            $cssVarsComp .= sprintf("\t%s:%s;\n", $k, $v);
                         }
 
                         $cssVarsComp .= "}";
