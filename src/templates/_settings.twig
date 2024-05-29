@@ -114,6 +114,32 @@
     {value: "4.5", label: "4.5rem"},
 ] %}
 
+{% set detailsOptions = [
+    {value: "", label: "Choose..."},
+    {value: "250", label: "250px"},
+    {value: "275", label: "275px"},
+    {value: "300", label: "300px"},
+    {value: "325", label: "325px"},
+    {value: "350", label: "350px"},
+    {value: "375", label: "375px"},
+    {value: "400", label: "400px"},
+    {value: "425", label: "425px"},
+    {value: "450", label: "450px"},
+] %}
+
+{% set touchTargetOptions = [
+    {value: "", label: "Choose..."},
+    {value: "1", label: "1rem"},
+    {value: "1.25", label: "1.25rem"},
+    {value: "1.5", label: "1.5rem"},
+    {value: "1.75", label: "1.75rem"},
+    {value: "2", label: "2rem"},
+    {value: "2.25", label: "2.25rem"},
+    {value: "2.5", label: "2.5rem"},
+    {value: "2.75", label: "2.75rem"},
+    {value: "3", label: "3rem"},
+] %}
+
 {% set themeOptions = [
     {value: "", label: 'Choose...'},
     {value: "t1", label: "IBM Scamp", selected: "selected"},
@@ -424,6 +450,24 @@
                     value: settings.headerHeight,
                     options: headerOptions,
                     errors: settings.getErrors("headerHeight")
+                }) }}
+                {{ forms.selectField({
+                    label: "Details Width"|t,
+                    instructions: "`--details-width`",
+                    id: "detailsWidth",
+                    name: "detailsWidth",
+                    value: settings.detailsWidth,
+                    options: detailsOptions,
+                    errors: settings.getErrors("detailsWidth")
+                }) }}
+                {{ forms.selectField({
+                    label: "Touch Target Size"|t,
+                    instructions: "`--touch-target-size`",
+                    id: "touchTargetSize",
+                    name: "touchTargetSize",
+                    value: settings.touchTargetSize,
+                    options: touchTargetOptions,
+                    errors: settings.getErrors("touchTargetSize")
                 }) }}
             </div>
         </div>

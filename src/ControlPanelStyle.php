@@ -80,6 +80,8 @@ class ControlPanelStyle extends Plugin
                     $sidebarWidth = trim($settings->sidebarWidth);
                     $globalSidebarWidth = trim($settings->globalSidebarWidth);
                     $headerHeight = trim($settings->headerHeight);
+                    $detailsWidth = trim($settings->detailsWidth);
+                    $touchTargetSize = trim($settings->touchTargetSize);
 
                     $cssVars = array();
 
@@ -118,6 +120,12 @@ class ControlPanelStyle extends Plugin
                     }
                     if ('' != $headerHeight) {
                         $cssVars['--header-height'] = $headerHeight.'rem';
+                    }
+                    if ('' != $detailsWidth) {
+                        $cssVars['--details-width'] = $detailsWidth.'px';
+                    }
+                    if ('' != $touchTargetSize) {
+                        $cssVars['--touch-target-size'] = $touchTargetSize.'rem';
                     }
 
                     if (count($cssVars) > 0) {

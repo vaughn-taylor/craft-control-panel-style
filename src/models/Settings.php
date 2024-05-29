@@ -107,6 +107,16 @@ class Settings extends Model
     public string $headerHeight = '';
 
     /**
+     * @var string details pane width.
+     */
+    public string $detailsWidth = '';
+
+    /**
+     * @var string touch target size.
+     */
+    public string $touchTargetSize = '';
+
+    /**
      * @var bool Toggle CSS variables on/off.
      */
     public bool $includeCSSVariables = false;
