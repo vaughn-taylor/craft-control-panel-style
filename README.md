@@ -2,6 +2,8 @@
 
 A plugin to create a more visual appealing Craft CMS Control Panel for you and your clients.
 
+![Theme Overview](https://github.com/vaughn-taylor/craft-control-panel-style/blob/5.x/src/web/dist/img/premade-themes.png)
+
 ## Requirements
 
 This plugin requires Craft CMS 5.x or later, and PHP 8.2 or later.
