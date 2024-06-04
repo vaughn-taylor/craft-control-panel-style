@@ -27,24 +27,24 @@ composer require vaughndtaylor/craft-control-panel-style
 
 ```
 
-## THEME CHOOSER
+## Theme Chooser
 
 This is by far the easiest way to add style to your control panel. If you like the overall theme, but want to tweak small parts, you can do that with the CSS Editor which will override the theme.
 
-## CSS EDITOR
+## CSS Editor
 
 Choose this option if you want to add just a few lines of CSS, or even hundreds of lines.
 
 
-## STATIC CSS FILE(S)
+## Static CSS File(s)
 
 It's your CMS, so why not create a custom look? After you've created your own CSS, simply put it in a publicly accessible location on your server, eg. `/web/dist/css/fancy.css` and add the path to the Static CSS file field. Toggle the field on, and turn on cache busting if necessary.
 
-## CSS VARIABLES
+## CSS Variables
 
 Craft uses TailwindCSS for styling which presents us with a bunch of CSS variables used for color, radiuses, padding, margins and more. Get crazy and set the the border radiuses to small=16, medium=18, and large=20 for pill buttons and soft corners!
 
-## CONTROL PANEL STRUCTURE
+## Control Panel Structure
 
 The prebuilt themes are based on the page structure as specified in `./vendor/craftcms/cms/src/templates/_layouts/cp.twig`.
 
