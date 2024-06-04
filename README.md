@@ -16,7 +16,7 @@ Go to the Plugin Store in your project’s Control Panel and search for “Contr
 
 #### With Composer
 
-Open your terminal and run the following commands:
+Run the following command in the root directory of your Craft project:
 
 ```bash
 # go to the project directory
@@ -25,8 +25,6 @@ cd /path/to/my-project.site
 # tell Composer to load the plugin
 composer require vaughndtaylor/craft-control-panel-style
 
-# tell Craft to install the plugin
-./craft plugin/install control-panel-style
 ```
 
 ## THEME CHOOSER
@@ -48,8 +46,7 @@ Craft uses TailwindCSS for styling which presents us with a bunch of CSS variabl
 
 ## CONTROL PANEL STRUCTURE
 
-From ./vendor/craftcms/cms/src/templates/_layouts/cp.twig
-The prebuilt themes are based on the page structure as specified the above file. Many of the CSS declarations in the themes use `!important` to ensure they are obeyed.
+The prebuilt themes are based on the page structure as specified in `./vendor/craftcms/cms/src/templates/_layouts/cp.twig`.
 
     ┌────────────────────────────────────────────────────────────────────────────────────┐
     │                                 #global-container                                  │
