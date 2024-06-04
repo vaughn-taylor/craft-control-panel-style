@@ -3,8 +3,6 @@
 {% import 'codeeditor/codeEditor' as codeEditor %}
 {% import '_includes/forms.twig' as forms %}
 
-{% set title = "Control Panel Style"|t('control-panel-style') %}
-
 {% macro configWarning(setting, docsUrl) -%}
     {{ "This is being overridden by the {setting} config setting."|t('app', {
         setting: '<a href="'~docsUrl~'" target="_blank">'~setting~'</a>'
