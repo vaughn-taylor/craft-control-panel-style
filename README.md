@@ -96,10 +96,10 @@ The prebuilt themes are based on the page structure as specified in `./vendor/cr
     │                                                                                    │
     └────────────────────────────────────────────────────────────────────────────────────┘
 
-## TAILWIND CSS GENERATED COLOR PALETTE:
+## TailwindCSS Generated Color Palette:
 
 There are a bunch of color variables to choose from all created by TailwindCSS's default palette. Of course you can also generate your own palette of colors using a custom TailwindCSS config file.
 
-## NOTES ON CRAFT'S PALETTE:
+## Notes on Craft's Palette:
 
 Some of the default TailwindCSS colors are missing from Craft's implemenation of the palette: slate, zinc, neutral, and stone – basically the gray tones have been limited to a cold and arguably lifeless palette.
