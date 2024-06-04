@@ -44,10 +44,7 @@ class ControlPanelStyle extends Plugin
         }
 
         // Load custom CSS before page render
-        Event::on(
-            View::class,
-            View::EVENT_BEFORE_RENDER_PAGE_TEMPLATE,
-            function (Event $event) {
+        Event::on(View::class, View::EVENT_BEFORE_RENDER_PAGE_TEMPLATE, function (Event $event) {
                 // Get view
                 $view = Craft::$app->getView();
 
@@ -160,7 +157,7 @@ class ControlPanelStyle extends Plugin
         // Get the override keys
         $overrideKeys = array_keys(Craft::$app->getConfig()->getConfigFromFile('control-panel-style'));
 
-        return Craft::$app->getView()->renderTemplate('control-panel-style/_settings', [
+        return Craft::$app->getView()->renderTemplate('control-panel-style/settings', [
             'settings' => $this->getSettings(),
             'overrideKeys' => $overrideKeys,
             'docsUrl' => $this->documentationUrl,

@@ -1,0 +1,482 @@
+{% do view.registerAssetBundle("vaughndtaylor\\craftcontrolpanelstyle\\assetbundles\\CpStyleAssetBundle") %}
+
+{% import 'codeeditor/codeEditor' as codeEditor %}
+{% import '_includes/forms.twig' as forms %}
+
+{% set title = "Control Panel Style"|t('control-panel-style') %}
+
+{% macro configWarning(setting, docsUrl) -%}
+    {{ "This is being overridden by the {setting} config setting."|t('app', {
+        setting: '<a href="'~docsUrl~'" target="_blank">'~setting~'</a>'
+    })|raw }}
+{%- endmacro %}
+
+{% from _self import configWarning %}
+
+{% set borderRadiusOptions = [
+    {value: '', label: '...'},
+    {value: 0, label: "0"},
+    {value: 2, label: "2"},
+    {value: 3, label: "3"},
+    {value: 4, label: "4"},
+    {value: 5, label: "5"},
+    {value: 6, label: "6"},
+    {value: 7, label: "7"},
+    {value: 8, label: "8"},
+    {value: 9, label: "9"},
+    {value: 10, label: "10"},
+    {value: 11, label: "11"},
+    {value: 12, label: "12"},
+    {value: 13, label: "13"},
+    {value: 14, label: "14"},
+    {value: 15, label: "15"},
+    {value: 16, label: "16"},
+    {value: 17, label: "17"},
+    {value: 18, label: "18"},
+    {value: 19, label: "19"},
+    {value: 20, label: "20"},
+] %}
+
+{% set sizeOptions = [
+    {value: '', label: '...'},
+    {value: 0, label: "0"},
+    {value: 2, label: "2"},
+    {value: 3, label: "3"},
+    {value: 4, label: "4"},
+    {value: 5, label: "5"},
+    {value: 6, label: "6"},
+    {value: 7, label: "7"},
+    {value: 8, label: "8"},
+    {value: 9, label: "9"},
+    {value: 10, label: "10"},
+    {value: 11, label: "11"},
+    {value: 12, label: "12"},
+    {value: 13, label: "13"},
+    {value: 14, label: "14"},
+    {value: 15, label: "15"},
+    {value: 16, label: "16"},
+    {value: 17, label: "17"},
+    {value: 18, label: "18"},
+    {value: 19, label: "19"},
+    {value: 20, label: "20"},
+    {value: 21, label: "21"},
+    {value: 22, label: "22"},
+    {value: 23, label: "23"},
+    {value: 24, label: "24"},
+    {value: 25, label: "25"},
+    {value: 26, label: "26"},
+    {value: 27, label: "27"},
+    {value: 28, label: "28"},
+    {value: 29, label: "29"},
+    {value: 30, label: "30"},
+    {value: 31, label: "31"},
+    {value: 32, label: "32"},
+    {value: 33, label: "33"},
+    {value: 34, label: "34"},
+    {value: 35, label: "35"},
+    {value: 36, label: "36"},
+] %}
+
+{% set paddingOptions = [
+    {value: "", label: "Choose..."},
+    {value: "--s", label: "Small"},
+    {value: "--m", label: "Medium"},
+    {value: "--l", label: "Large"},
+    {value: "--xl", label: "X-Large"},
+] %}
+
+{% set sidebarOptions = [
+    {value: "", label: "Choose..."},
+    {value: "11", label: "11rem"},
+    {value: "12", label: "12rem"},
+    {value: "13", label: "13rem"},
+    {value: "14", label: "14rem"},
+    {value: "15", label: "15rem"},
+    {value: "16", label: "16rem"},
+    {value: "17", label: "17rem"},
+    {value: "18", label: "18rem"},
+    {value: "19", label: "19rem"},
+    {value: "20", label: "20rem"},
+    {value: "21", label: "21rem"},
+] %}
+
+{% set headerOptions = [
+    {value: "", label: "Choose..."},
+    {value: "2", label: "2rem"},
+    {value: "2.25", label: "2.25rem"},
+    {value: "2.5", label: "2.5rem"},
+    {value: "2.75", label: "2.75rem"},
+    {value: "3", label: "3rem"},
+    {value: "3.25", label: "3.25rem"},
+    {value: "3.5", label: "3.5rem"},
+    {value: "3.75", label: "3.75rem"},
+    {value: "4", label: "4rem"},
+    {value: "4.25", label: "4.25rem"},
+    {value: "4.5", label: "4.5rem"},
+] %}
+
+{% set detailsOptions = [
+    {value: "", label: "Choose..."},
+    {value: "250", label: "250px"},
+    {value: "275", label: "275px"},
+    {value: "300", label: "300px"},
+    {value: "325", label: "325px"},
+    {value: "350", label: "350px"},
+    {value: "375", label: "375px"},
+    {value: "400", label: "400px"},
+    {value: "425", label: "425px"},
+    {value: "450", label: "450px"},
+] %}
+
+{% set touchTargetOptions = [
+    {value: "", label: "Choose..."},
+    {value: "1", label: "1rem"},
+    {value: "1.25", label: "1.25rem"},
+    {value: "1.5", label: "1.5rem"},
+    {value: "1.75", label: "1.75rem"},
+    {value: "2", label: "2rem"},
+    {value: "2.25", label: "2.25rem"},
+    {value: "2.5", label: "2.5rem"},
+    {value: "2.75", label: "2.75rem"},
+    {value: "3", label: "3rem"},
+] %}
+
+{% set themeOptions = [
+    {value: "", label: 'Choose...'},
+    {value: "t1", label: "IBM Scamp", selected: "selected"},
+    {value: "t2", label: "Apple Lisa"},
+    {value: "t3", label: "Nintendo 64"},
+    {value: "t4", label: "Sony Walkman"},
+    {value: "t5", label: "Stoic"},
+    {value: "t6", label: "Darkness"},
+    {value: "t7", label: "Hell"},
+    {value: "t8", label: "Monotone - Cool"},
+    {value: "t9", label: "Monotone - Warm"},
+] %}
+
+{% block content %}
+
+    <div id="main-content" class="content-pane">
+
+        <div id="overview" class="overview">
+            <div class="icon">
+                <?xml version="1.0" encoding="UTF-8"?><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 384 512"><defs><linearGradient id="linear-gradient" x1="192" y1="0" x2="192" y2="288" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ff18ff"/><stop offset="1" stop-color="blue"/></linearGradient></defs><path d="M162.4,6c-1.5-3.6-5-6-8.9-6h-19c-3.9,0-7.5,2.4-8.9,6l-20.7,51.7c-3.2,8-14.6,8-17.8,0L66.4,6c-1.5-3.6-5-6-8.9-6h-9.5C21.5,0,0,21.5,0,48v240h384V48c0-26.5-21.5-48-48-48h-105.5c-3.9,0-7.5,2.4-8.9,6l-20.7,51.7c-3.2,8-14.6,8-17.8,0l-20.7-51.7Z" fill="url(#linear-gradient)" isolation="isolate" stroke-width="0"/><path d="M0,288h384v32c0,35.3-28.7,64-64,64h-64v64c0,35.3-28.7,64-64,64s-64-28.7-64-64v-64h-64c-35.3,0-64-28.7-64-64v-32ZM192,464c8.84,0,16-7.16,16-16s-7.16-16-16-16-16,7.16-16,16,7.16,16,16,16Z" fill="#000" stroke-width="0"/></svg>
+                <h2>Style your Control Panel</h2>
+            </div>
+            <hr>
+            <p>There are multiple ways to style your Craft CMS Control Panel. Each method can be toggled on/off using the switches below each section. You can even use multiple methods at the same time.</p>
+            <ol>
+                <li><strong>Theme Chooser:</strong> this is by far the easiest way to add style to your control panel. If you like the overall theme, but want to tweak small parts, you can do that with the CSS Editor which will override the theme.</li>
+                <li><strong>CSS Editor:</strong> choose this option if you want to add just a few lines of CSS, or even hundreds of lines.</li>
+                <li><strong>Static CSS File(s):</strong> choose this option if you want to add styling from a compiled CSS file(s). This is a simple way to add branded style to your control panel.</li>
+                <li><strong>CSS Variables:</strong> Craft uses TailwindCSS for styling which presents us with a bunch of CSS variables used for color, radiuses, padding, margins and more.</li>
+            </ol>
+        </div>
+
+        <div id="cssthemes" class="section">
+
+            <div class="heading-section">
+                <div class="heading-wrapper">
+                    <div class="heading">
+                        <label>Theme Chooser</label>
+                    </div>
+                    <div class="instructions">
+                        <p>The fastest way to add style to your control panel. Just choose from one of the premade themes.</p>
+                    </div>
+                </div>
+                <div class="toggle-method">
+                    {{ forms.lightswitch({
+                        offLabel: "Off"|t,
+                        onLabel: "On"|t,
+                        id: 'includeTheme',
+                        name: 'includeTheme',
+                        value: settings.includeTheme,
+                        on: (settings.includeTheme is defined) ? settings.includeTheme : ""
+                    }) }}
+                </div>
+            </div>
+
+            <div class="group-field">
+                {{ forms.selectField({
+                    id: "themeChooser",
+                    name: "themeChooser",
+                    value: settings.themeChooser,
+                    options: themeOptions,
+                    errors: settings.getErrors("themeChooser")
+                }) }}
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div id="codeeditor" class="section">
+
+            <div class="heading-section">
+                <div class="heading-wrapper">
+                    <div class="heading">
+                        <label>CSS Editor</label>
+                    </div>
+                    <div class="instructions">
+                        <p>Add CSS to the page with this editor.</p>
+                    </div>
+                </div>
+                <div class="toggle-method">
+                    {{ forms.lightswitch({
+                        offLabel: "Off"|t,
+                        onLabel: "On"|t,
+                        id: 'includeCodeEditor',
+                        name: 'includeCodeEditor',
+                        value: settings.includeCodeEditor,
+                        on: (settings.includeCodeEditor is defined) ? settings.includeCodeEditor : ""
+                    }) }}
+                </div>
+            </div>
+
+            <div class="group-field">
+                {% set monacoOptions = {
+                    language: 'css',
+                    theme: 'vs-dark',
+                    lineNumbers: 'on',
+                    lineNumbersMinChars: 4,
+                    lineDecorationsWidth: 6,
+                    folding: true,
+                    fontSize: 13,
+                    minimap: true,
+                    codeLens: true,
+                    colorDecorators: true
+                } %}
+
+                {% set codeEditorOptions = {
+                    wrapperClass: 'monaco-editor-background-frame'
+                } %}
+
+                {{ codeEditor.textareaField({
+                    id: 'cssCodeEditor',
+                    name: 'cssCodeEditor',
+                    value: settings.cssCodeEditor,
+                    rows: 15
+                }, 'CodeField', monacoOptions, codeEditorOptions) }}
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div id="staticcss" class="section">
+
+            <div class="heading-section">
+                <div class="heading-wrapper">
+                    <div class="heading">
+                        <label>Static CSS File</label>
+                    </div>
+                    <div class="instructions">
+                        <p>Add the absolute path to one or more CSS files (eg. `/dist/css/cp.css`). Separate multiple paths with commas. You may use aliases (eg. `@web/dist/css/cp.css`) in your filepath.</p>
+                    </div>
+                </div>
+                <div class="toggle-method">
+                    {{ forms.lightswitch({
+                        offLabel: "Off"|t,
+                        onLabel: "On"|t,
+                        id: 'includeCssStaticFile',
+                        name: 'includeCssStaticFile',
+                        value: settings.includeCssStaticFile,
+                        on: (settings.includeCssStaticFile is defined) ? settings.includeCssStaticFile : ""
+                    }) }}
+                    {{ forms.lightswitch({
+                        offLabel: "No Bust"|t,
+                        onLabel: "Bust"|t,
+                        id: 'cacheBusting',
+                        name: 'cacheBusting',
+                        value: settings.cacheBusting,
+                        on: (settings.cacheBusting is defined) ? settings.cacheBusting : ""
+                    }) }}
+                </div>
+            </div>
+
+            <div class="group-field">
+                {{ forms.autosuggestField({
+                    id: 'cssStaticFile',
+                    name: 'cssStaticFile',
+                    suggestEnvVars: true,
+                    suggestAliases: true,
+                    value: settings.cssStaticFile,
+                    disabled: 'cssStaticFile' in overrideKeys,
+                    warning: 'cssStaticFile' in overrideKeys ? configWarning('cssStaticFile', docsUrl)
+                }) }}
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div id="cssvariables" class="section">
+
+            <div class="heading-section">
+                <div class="heading-wrapper">
+                    <div class="heading">
+                        <label>CSS Variables</label>
+                    </div>
+                    <div class="instructions">
+                        <p>Control the look of certain visual elements like button and pane radiuses, padding, and much more. <strong>A little test:</strong> set the the border radiuses to small=16, medium=18, and large=20.</p>
+                    </div>
+                </div>
+                <div class="toggle-method">
+                    {{ forms.lightswitch({
+                        offLabel: "Off"|t,
+                        onLabel: "On"|t,
+                        id: 'includeCSSVariables',
+                        name: 'includeCSSVariables',
+                        value: settings.includeCSSVariables,
+                        on: (settings.includeCSSVariables is defined) ? settings.includeCSSVariables : ""
+                    }) }}
+                </div>
+            </div>
+
+            <div class="group-field">
+                <div class="control-group">
+                    {{ forms.selectField({
+                        label: "Small Border Radius"|t,
+                        instructions: "`--small-border-radius`",
+                        id: "smallBorderRadius",
+                        name: "smallBorderRadius",
+                        value: settings.smallBorderRadius,
+                        options: borderRadiusOptions,
+                        errors: settings.getErrors("smallBorderRadius")
+                    }) }}
+
+                    {{ forms.selectField({
+                        label: "Medium Border Radius"|t,
+                        instructions: "`--medium-border-radius`",
+                        id: "mediumBorderRadius",
+                        name: "mediumBorderRadius",
+                        value: settings.mediumBorderRadius,
+                        options: borderRadiusOptions,
+                        errors: settings.getErrors("mediumBorderRadius")
+                    }) }}
+
+                    {{ forms.selectField({
+                        label: "Large Border Radius"|t,
+                        instructions: "`--large-border-radius`",
+                        id: "largeBorderRadius",
+                        name: "largeBorderRadius",
+                        value: settings.largeBorderRadius,
+                        options: borderRadiusOptions,
+                        errors: settings.getErrors("largeBorderRadius")
+                    }) }}
+                </div>
+                <div class="control-group">
+                    {{ forms.selectField({
+                        label: "XS Size"|t,
+                        instructions: "`--xs`",
+                        id: "xsSize",
+                        name: "xsSize",
+                        value: settings.xsSize,
+                        options: sizeOptions,
+                        errors: settings.getErrors("xsSize")
+                    }) }}
+
+                    {{ forms.selectField({
+                        label: "S Size"|t,
+                        instructions: "`--s`",
+                        id: "sSize",
+                        name: "sSize",
+                        value: settings.sSize,
+                        options: sizeOptions,
+                        errors: settings.getErrors("sSize")
+                    }) }}
+
+                    {{ forms.selectField({
+                        label: "M Size"|t,
+                        instructions: "`--m`",
+                        id: "mSize",
+                        name: "mSize",
+                        value: settings.mSize,
+                        options: sizeOptions,
+                        errors: settings.getErrors("mSize")
+                    }) }}
+
+                    {{ forms.selectField({
+                        label: "L Size"|t,
+                        instructions: "`--l`",
+                        id: "lSize",
+                        name: "lSize",
+                        value: settings.lSize,
+                        options: sizeOptions,
+                        errors: settings.getErrors("lSize")
+                    }) }}
+
+                    {{ forms.selectField({
+                        label: "XL Size"|t,
+                        instructions: "`--xl`",
+                        id: "xlSize",
+                        name: "xlSize",
+                        value: settings.xlSize,
+                        options: sizeOptions,
+                        errors: settings.getErrors("xlSize")
+                    }) }}
+
+                    {{ forms.selectField({
+                        label: "Padding Size"|t,
+                        instructions: "`--padding`",
+                        id: "paddingSize",
+                        name: "paddingSize",
+                        value: settings.paddingSize,
+                        options: paddingOptions,
+                        errors: settings.getErrors("paddingSize")
+                    }) }}
+                </div>
+                <div class="control-group">
+                    {{ forms.selectField({
+                        label: "Global Sidebar Width"|t,
+                        instructions: "`--global-sidebar-width`",
+                        id: "globalSidebarWidth",
+                        name: "globalSidebarWidth",
+                        value: settings.globalSidebarWidth,
+                        options: sidebarOptions,
+                        errors: settings.getErrors("globalSidebarWidth")
+                    }) }}
+                    {{ forms.selectField({
+                        label: "Sidebar Width"|t,
+                        instructions: "`--sidebar-width`",
+                        id: "sidebarWidth",
+                        name: "sidebarWidth",
+                        value: settings.sidebarWidth,
+                        options: sidebarOptions,
+                        errors: settings.getErrors("sidebarWidth")
+                    }) }}
+                    {{ forms.selectField({
+                        label: "Header Height"|t,
+                        instructions: "`--header-height`",
+                        id: "headerHeight",
+                        name: "headerHeight",
+                        value: settings.headerHeight,
+                        options: headerOptions,
+                        errors: settings.getErrors("headerHeight")
+                    }) }}
+                    {{ forms.selectField({
+                        label: "Details Width"|t,
+                        instructions: "`--details-width`",
+                        id: "detailsWidth",
+                        name: "detailsWidth",
+                        value: settings.detailsWidth,
+                        options: detailsOptions,
+                        errors: settings.getErrors("detailsWidth")
+                    }) }}
+                    {{ forms.selectField({
+                        label: "Touch Target Size"|t,
+                        instructions: "`--touch-target-size`",
+                        id: "touchTargetSize",
+                        name: "touchTargetSize",
+                        value: settings.touchTargetSize,
+                        options: touchTargetOptions,
+                        errors: settings.getErrors("touchTargetSize")
+                    }) }}
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

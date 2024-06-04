@@ -13,7 +13,6 @@
 
 namespace vaughndtaylor\craftcontrolpanelstyle\models;
 
-use Craft;
 use craft\base\Model;
 
 /**

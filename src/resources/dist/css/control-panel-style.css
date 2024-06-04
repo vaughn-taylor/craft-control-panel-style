@@ -24,16 +24,8 @@
     height: auto;
     margin: 0 0.75rem 0 0;
 }
-#settings-main-content .overview {
-    background: var(--gray-100);
-    border: 1px solid var(--gray-200);
-    border-radius: var(--small-border-radius);
-    padding: var(--l);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
 #settings-main-content .section {
-    margin: 1rem 0 0;
-    padding: var(--l) var(--l) calc(var(--l) * 1.5) var(--l);
+    margin: 1.25rem 0 2rem;
 }
 #settings-main-content .heading-section {
     display: grid;

@@ -12,7 +12,6 @@
 
 namespace vaughndtaylor\craftcontrolpanelstyle\assetbundles;
 
-use Craft;
 use craft\web\AssetBundle;
 use craft\web\assets\cp\CpAsset;
 
@@ -25,9 +24,9 @@ class CpStyleAssetBundle extends AssetBundle
 
         $this->depends = [CpAsset::class];
 
-        $this->js = [
-            'js/control-panel-style.js',
-        ];
+        // $this->js = [
+        //     'js/control-panel-style.js',
+        // ];
 
         $this->css = [
             "css/control-panel-style.css",

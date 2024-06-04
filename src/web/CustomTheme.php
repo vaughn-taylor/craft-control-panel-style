@@ -12,8 +12,6 @@
 
 namespace vaughndtaylor\craftcontrolpanelstyle\web;
 
-use Craft;
-use craft\helpers\App;
 use craft\web\AssetBundle;
 use craft\web\assets\cp\CpAsset;
 use vaughndtaylor\craftcontrolpanelstyle\ControlPanelStyle;
