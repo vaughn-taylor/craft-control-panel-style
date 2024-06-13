@@ -43,8 +43,43 @@ class ControlPanelStyle extends Plugin
             return;
         }
 
+        // Defer most setup tasks until Craft is fully initialized
+        Craft::$app->onInit(function() {
+            $this->attachEventHandlers();
+        });
+    }
+
+    /**
+     * Creates and returns the model used to store the plugin’s settings.
+     *
+     * @return Model|null
+     */
+    protected function createSettingsModel(): ?Model
+    {
+        return new Settings();
+    }
+
+    protected function settingsHtml(): ?string
+    {
+        // Get the override keys
+        $overrideKeys = array_keys(Craft::$app->getConfig()->getConfigFromFile('control-panel-style'));
+
+        return Craft::$app->getView()->renderTemplate('control-panel-style/settings', [
+            'settings' => $this->getSettings(),
+            'overrideKeys' => $overrideKeys,
+            'docsUrl' => $this->documentationUrl,
+        ]);
+    }
+
+    private function attachEventHandlers(): void
+    {
+        // Register event handlers here ...
+        // (see https://craftcms.com/docs/4.x/extend/events.html to get started)
         // Load custom CSS before page render
-        Event::on(View::class, View::EVENT_BEFORE_RENDER_PAGE_TEMPLATE, function (Event $event) {
+        Event::on(
+            View::class, 
+            View::EVENT_BEFORE_RENDER_PAGE_TEMPLATE, 
+            function (Event $event) {
                 // Get view
                 $view = Craft::$app->getView();
 
@@ -136,31 +171,13 @@ class ControlPanelStyle extends Plugin
                     }
                 }
 
-                // Load theme from plugin filepath
-                $view->registerAssetBundle(CustomTheme::class);
+                $showTheme = $settings->includeTheme;
+                if($showTheme) {
+                    // Load theme from plugin filepath
+                    $view->registerAssetBundle(CustomTheme::class);
+                }
             }
         );
     }
 
-    /**
-     * Creates and returns the model used to store the plugin’s settings.
-     *
-     * @return Model|null
-     */
-    protected function createSettingsModel(): ?Model
-    {
-        return new Settings();
-    }
-
-    protected function settingsHtml(): ?string
-    {
-        // Get the override keys
-        $overrideKeys = array_keys(Craft::$app->getConfig()->getConfigFromFile('control-panel-style'));
-
-        return Craft::$app->getView()->renderTemplate('control-panel-style/settings', [
-            'settings' => $this->getSettings(),
-            'overrideKeys' => $overrideKeys,
-            'docsUrl' => $this->documentationUrl,
-        ]);
-    }
 }
