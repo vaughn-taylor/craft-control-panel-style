@@ -24,7 +24,7 @@ use yii\base\Event;
 class ControlPanelStyle extends Plugin
 {
     /** @var string */
-    public string $schemaVersion = '1.0.0';
+    public string $schemaVersion = '1.0.1';
 
     /** @var ControlPanelStyle */
     public static ControlPanelStyle $plugin;
