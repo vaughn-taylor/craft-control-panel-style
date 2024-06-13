@@ -1,4 +1,6 @@
 {
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "name": "vaughndtaylor/craft-control-panel-style",
   "description": "A plugin to create a more visual appealing Craft CMS Control Panel for you and your clients.",
   "type": "craft-plugin",
